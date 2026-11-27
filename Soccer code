@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int getkick();
+int getdive();
+void checkgoal(int user, int comp);
+
+int main() {
+    
+    srand(time(NULL));
+    
+    printf("=== PENALTY SHOOTOUT ===\n");
+    
+    int user = getkick();
+    int comp = getdive();
+
+    switch(user){
+        case 1:
+        printf("Player kicked: Left \n");
+        break;
+         case 2:
+        printf("Player kicked: Center \n");
+        break;
+         case 3:
+        printf("Player kicked: Right \n");
+        break;
+    }
+    switch(comp)
+{
+        case 1:
+        printf("Goalie dived: Left \n");
+        break; 
+        case 2:
+        printf("Goalie dived: Center\n");
+        break; 
+        case 3:
+        printf("Goalie dived: Right \n");
+        break;
+}    
+checkgoal(user, comp);
+
+    return 0;
+}
+int getdive(){
+    return (rand() % 3) + 1;
+}
+int getkick(){
+    
+    int user1 = 0;
+    
+    do{
+        printf("Choose kick direction:\n");
+        printf("1. Left\n");
+        printf("2. Center\n");
+        printf("3. Right\n");
+        printf("Enter choice:");
+        scanf("%d", &user1);
+    }while(user1 < 1 || user1 > 3);
+    
+    return user1;
+}
+void checkgoal(int user, int comp){
+    
+    if(user == 1 && comp == 2){
+        printf("GOAL! You Win!");
+    }else if(user == 1 && comp == 3){
+        printf("GOAL! You Win!");
+    }else if (user== 2 && comp == 1){
+        printf("GOAL! You Win!");
+    }else if (user== 2 && comp == 3){
+        printf("GOAL! You Win!");
+    }else if (user== 3 && comp == 1){
+        printf("GOAL! You Win!");
+    }else if (user== 3 && comp == 2){
+        printf("GOAL! You Win!");
+    }else{
+        printf("Goalie Saves! You Lose!");
+    }
+}
+
+
+
+
+
+
+
+
