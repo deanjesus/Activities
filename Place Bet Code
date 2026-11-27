@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int getbet();
+int rolldice();
+void checkbet(int bet, int dice);
+
+
+int main(){
+    
+    srand(time(NULL));
+    
+    printf("=== DICE ROLL: HIGH, LOW, OR SEVEN ===\n");
+    
+    int bet = getbet();
+    int dice = rolldice();
+    
+    switch(bet){
+        case 1:
+        printf("Your Bet: Low (1-2)\n");
+        break;
+        case 2:
+        printf("Your Bet: Lucky Middle (3-4)\n");
+        break;
+        case 3:
+        printf("Your Bet: High (5-6)\n");
+        break;
+    }
+    switch(dice){
+        case 1:
+        printf("Dice Rolled: 1\n");
+        break;
+        case 2:
+        printf("Dice Rolled: 2\n");
+        break;
+        case 3:
+        printf("Dice Rolled: 3\n");
+        break;
+        case 4:
+        printf("Dice Rolled: 4\n");
+        break;
+        case 5:
+        printf("Dice Rolled: 5\n");
+        break;
+        case 6:
+        printf("Dice Rolled: 6\n");
+        break;
+        
+    }
+    
+    checkbet(bet, dice);
+    
+    return 0;
+}
+int rolldice(){
+    return (rand() % 6) + 1; 
+}
+int getbet(){
+    
+    int bet1 = 0;
+    
+    do{
+        printf("Place your bet: ");
+        printf("1. Low 1-2\n");
+        printf("2. Lucky Middle 3-4\n");
+        printf("3. High 5-6\n");
+        printf("Enter choice: ");
+        scanf("%d", &bet1);
+    }while(bet1 < 1 || bet1 > 3);
+   
+   return bet1;
+}
+void checkbet(int bet, int dice) {
+    
+    if(bet == 1 && dice == 1 || dice == 2){
+        printf("You Win");
+    }else if(bet == 2 && dice == 3 || dice == 4){
+        printf("You Win");
+    }else if(bet  == 3 && dice == 5 || dice == 6){
+        printf("You Win");
+    }else{
+        printf("You Lose");
+    }
+    
+}
+
